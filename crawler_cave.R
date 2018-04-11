@@ -8,7 +8,6 @@ library(magrittr)
 library(rvest)
 library(stringr)
 library(httr)
-library(httr)
 rm(list = ls())
 
 # Hàm lấy link giới thiệu về các em phò: 
@@ -172,6 +171,10 @@ pho_hn <- get_information_for_group_sex_worker(hn$link_id)
 # Lấy dữ liệu các em phò SG: 
 sg <- all_sex_worker_links("https://gaigoivl.com/khu-vuc/gai-goi-sai-gon-tp-hcm/page/", 15)
 pho_sg <- get_information_for_group_sex_worker(sg$link_id)
+
+# Lưu lại dữ liệu ở ổ D: 
+
+write.csv(bind_rows(pho_hn, pho_sg), "D:/du_lieu_pho.csv", row.names = FALSE)
 
 
 
